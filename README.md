@@ -18,3 +18,6 @@ _layout目录下放置的是模板。
 * default.html
 * post.html
 
+## _post 目录
+该目录下就是我们blog的主体内容了。可以组织成Markdown文件。但是文件得是
+<YYYY>-<MM>-<DD>-<blog-tiltle>.后缀的格式，后缀可以是md。

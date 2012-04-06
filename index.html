@@ -9,4 +9,8 @@ title: 练习github's blog
 
 <div>
  start
+  {% for post in site.posts %}
+  	<li><a href={{ post.url  }} > {{ post.title  }} </a>
+  {% endfor %}
+  </ul>
 </div>
