@@ -1,0 +1,78 @@
+
+body {
+	text-align: center;
+	margin:auto;
+	margin-top:50px;
+	width:800px;
+/********* 整体居中 **************/
+}
+
+#navigation {
+       	 height:1.2em;
+	 border-bottom: solid 1px;
+/******* 导航下划线 *************/
+}
+
+.nav-ul {
+     	background:black;
+     	list-style:none;   /**** 去掉黑点 *****/  
+	padding:0 0 0 100px;     
+}
+
+.nav-item{
+
+	border-right:solid 1px ;
+	float:left;
+	padding:0 10px ;
+}
+
+a{
+	text-decoration:none;   /**** 去掉下划线 *****/  
+}
+
+#navigation a:hover
+{
+	background:pink;
+}
+
+.clear {
+	clear:both;
+}
+
+#content
+{
+	text-align:left;
+}
+
+#content-left
+{	
+	width:600px;
+	float:left;
+	padding-top:100px;
+}
+
+
+#content-right
+{
+	float:right;
+	width:160px;
+	margin-right:10px;
+
+}
+
+#articles-list
+{
+	border-left:dotted 1.2px;
+}
+
+#articl-head-height 
+{
+	height: 60px;
+}
+
+
+code 
+{
+	background:beige;
+	
+}
