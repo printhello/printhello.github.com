@@ -3,30 +3,48 @@ body {
 	text-align: center;
 	margin:auto;
 	margin-top:50px;
-	width:800px;
+	width:1000px;
 /********* 整体居中 **************/
 }
 
+#header
+{
+	width:1000px;
+	
+}
+
+#logo
+{
+	width:1000px;
+	height:100px;
+	background: url("../images/logo.png");
+}
+
+#body 
+{
+	width:800px;
+	margin:auto;
+}
+
 #navigation {
-       	 height:1.2em;
+     height:1.2em;
 	 border-bottom: solid 1px;
 /******* 导航下划线 *************/
 }
 
 .nav-ul {
-     	background:black;
-     	list-style:none;   /**** 去掉黑点 *****/  
+    background:black;
+   	list-style:none;   /**** 去掉黑点 *****/  
 	padding:0 0 0 100px;     
 }
 
 .nav-item{
-
 	border-right:solid 1px ;
 	float:left;
 	padding:0 10px ;
 }
 
-a{
+.nav-item a{
 	text-decoration:none;   /**** 去掉下划线 *****/  
 }
 
@@ -39,24 +57,20 @@ a{
 	clear:both;
 }
 
-#content
-{
-	text-align:left;
-}
-
 #content-left
 {	
-	width:600px;
+	width:500px;
 	float:left;
 	padding-top:100px;
+	text-align:left;
 }
 
 
 #content-right
 {
 	float:right;
-	width:160px;
-	margin-right:10px;
+	width:200px;
+	margin-right:50px;
 
 }
 
@@ -68,11 +82,4 @@ a{
 #articl-head-height 
 {
 	height: 60px;
-}
-
-
-code 
-{
-	background:beige;
-	
 }

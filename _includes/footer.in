@@ -1,0 +1,10 @@
+<div id="footer">
+	<hr />
+	<img src="http://www.danasoft.com/vipersig.jpg" border="0" style="float:left">
+
+	Copyright &copy 2012 Gotaly Hosted by <a href='http://github.com/gotgit/gotgit.github.com/' target='_blank'>GitHub</a> and powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>
+
+</div><!-- end of footer-->
+</body>
+
+</html>

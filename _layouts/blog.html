@@ -1,59 +1,13 @@
-<html>
 
-<!--
-模板里面的内容content会被引用其的文件内容替换，而page.title则是内置函数或认为是属性
--->
+{% include header.in  %}
 
-<head>
-	<meta charset="utf-8" />
-	<title> {{ page.title  }} </title>
-	<link rel="stylesheet" href="/css/index.css" type="text/css" />
-</head>
-
-<body>
 <div id="body">
-	<div id="navigation">
-	    <ul class="nav-ul">
-		<li class="nav-item"> &nbsp; </li>
-		<li class="nav-item"><a href="/">Home</a></li>
-		<li class="nav-item"><a href="/">Articles</a></li>
-		<li class="nav-item"><a href="/">About</a></li>
-	    </ul>
-
-	</div> <!-- end of navigation  -->
-	<div class="clear">
-	</div>
-
-	<div id="content">
-		<div id="content-left">
-		<h2>{{ page.title }}</h2>
+	<div id="content" style="text-align:left">
+		<h1 style="text-align:center">{{ page.title }}</h1>
 			{{  content  }}	
-		</div><!-- end of content-left -->
-
-		<div id="content-right">
-			<div id="articl-head-height">
-			</div>
-			<div id="articles-list">			
-				<h3> 文章列表 </h3>
-				<ul>
-					{% for post in site.posts limit:25  %}
-						<li><a href={{ post.url  }} > {{ post.title  }}	</a> </li>
-					{% endfor  %}
-				</ul>
-			</div><!-- end of articles-list -->
-	    		<div class="clear">
-	    		</div>
-		</div><!-- end of content-right -->
 	</div><!-- end of content -->
 
-	<div class="clear">
-	</div>
+	<div class="clear"> </div>
+</div> <!-- end of body  -->
 
-	<div .class="footer">
-		<hr />
-	Copyright &copy 2012 Gotaly Hosted by <a href='http://github.com/gotgit/gotgit.github.com/' target='_blank'>GitHub</a> and powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>
-	</div><!-- end of footer-->
-</div>
-</body>
-
-</html>
+{% include footer.in  %}
