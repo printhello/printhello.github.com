@@ -7,9 +7,19 @@ title: Print Hello
 这里面的内容会在_layouts/index.html里面的{{ content  }} 替换
 -->
 
+<style type="text/css">
+	h2{
+		text-align:center;
+	}
+	.date{
+		float:right;
+	}
+</style>
+
 {% for post in site.posts limit:1 %}
-<h2> {{ post.title  }} </h2>
-<span class='date'>{{post.date | date_to_string}}</span>
+<h2 > {{ post.title  }} </h2>
+<div class='date' >--{{post.date | date_to_string}}</div>
+<div class="clear"> </div>
 <div id='index-blog'>{{post.content}}</div>
 {% endfor %}
 

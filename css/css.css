@@ -26,9 +26,13 @@ body {
 	margin:auto;
 }
 
+a{
+	text-decoration:none;   /**** 去掉下划线 *****/  
+}
+
 #navigation {
      height:1.2em;
-	 border-bottom: solid 1px;
+     border-bottom: solid 1px;
 /******* 导航下划线 *************/
 }
 
@@ -82,4 +86,11 @@ body {
 #articl-head-height 
 {
 	height: 60px;
+}
+
+
+code 
+{
+	text-decoration: underline 
+	width:500px
 }
