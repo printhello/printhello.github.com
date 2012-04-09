@@ -112,11 +112,11 @@ Markdown 是一种轻量级的标记语言，由John Gruber和Aaron Swartz创建
 
 * `[]（）` 如：
 
-	[谷歌](http://google.com "title属性")，三个内容分别是链接内容，目的地url，以及双引号里面的title属性
+		`[谷歌](http://google.com "title属性")`，三个内容分别是链接内容，目的地url，以及双引号里面的title属性
 
 * `[][]` 如：
 
-	[新][1]的链接方式，两个内容依次是链接内容和链接id，链接id是像写参考文献一样罗列在文档某处的，我一般放在结尾，很有种写论文的感觉，呵呵。。罗列示例
+[新][1]的链接方式，两个内容依次是链接内容和链接id，链接id是像写参考文献一样罗列在文档某处的，我一般放在结尾，很有种写论文的感觉，呵呵。。罗列示例
 
 
 >    `[0]:  http://daringfireball.net/projects/markdown/ "MarkDown 主页"`
