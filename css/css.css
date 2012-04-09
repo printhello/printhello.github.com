@@ -92,6 +92,7 @@ a{
 
 code {
   font: 80% Monaco, 'Courier New', Courier, monospace;
+  width:600px;
 }
 
 pre {
@@ -99,5 +100,4 @@ pre {
   margin: 1em 2em 1em 1.5em;
   padding: .75em 1.25em;
   line-height: 1em;
-  width:600px;
 }
