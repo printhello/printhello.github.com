@@ -89,8 +89,14 @@ a{
 }
 
 
-code 
-{
-	text-decoration: underline 
-	width:500px
+
+code {
+  font: 80% Monaco, 'Courier New', Courier, monospace;
+}
+
+pre {
+  border: 1px solid #ddd;
+  margin: 1em 2em 1em 1.5em;
+  padding: .75em 1.25em;
+  line-height: 1em;
 }
