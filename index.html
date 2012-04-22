@@ -7,22 +7,37 @@ title: Print Hello
 这里面的内容会在_layouts/index.html里面的{{ content  }} 替换
 -->
 
+		 <script type="text/javascript">
+			var child;
+			var content;
+			var url= "https://api.github.com/users/gota-git/repos"; 
+			$.ajax({
+				url:url,
+				dataType:"jsonp",
+				success:function(data){
+					var i;
+					var parent = document.getElementById("repos");
+					for(i=0;i<3;i++){
+						child = document.createElement("div");
+						child.class="repo";
+						content= "<a href="+data.data[i].html_urf+">"+data.data[i].name+"</a>"+"<br />"+data.data[i].description;
+						child.innerHTML=content;
+						
+						parent.appendChild(child);
+					}
+				}
+			})
+ 		</script>
 <style type="text/css">
 	h2{
-		text-align:center;
+		text-align:left;
 	}
-	.date{
-		float:right;
-	}
-	li{
-		text-align:left
+	.repo{
+		folat:left;
+		width:100px;
 	}
 </style>
 
-{% for post in site.posts limit:1 %}
-<h2 > {{ post.title  }} </h2>
-<div class='date' >--{{post.date | date_to_string}}</div>
-<div class="clear"> </div>
-<div id='index-blog'>{{post.content}}</div>
-{% endfor %}
+<h2 > My Repos: </h2><br />
+<div id='repos' ></div>
 
