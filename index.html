@@ -20,7 +20,7 @@ title: Print Hello
 					for(i=0;i<3;i++){
 						child = document.createElement("div");
 						child.class="repo";
-						content= "<a href="+data.data[i].html_urf+">"+data.data[i].name+"</a>"+"<br />"+data.data[i].description;
+						content= "<a href="+data.data[i].html_url+">"+data.data[i].name+"</a>"+"<br />"+data.data[i].description;
 						child.innerHTML=content;
 						
 						parent.appendChild(child);
