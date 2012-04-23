@@ -17,10 +17,15 @@ title: Print Hello
 				success:function(data){
 					var i;
 					var parent = document.getElementById("repos");
+					var css_child="float:left;width:130px;height:100px;margin-left:30px;";
 					for(i=0;i<3;i++){
 						child = document.createElement("div");
-						child.class="repo";
-						content= "<a href="+data.data[i].html_url+">"+data.data[i].name+"</a>"+"<br />"+data.data[i].description;
+						if (i<2){
+							child.setAttribute("style",css_child+"border-right:blue dotted 1px;");
+						} else {
+							child.setAttribute("style",css_child);
+						}
+						content= "<a href="+data.data[i].html_url+">"+data.data[i].name+":</a>"+"<div style='margin-left:20px'>"+data.data[i].description+"</div>";
 						child.innerHTML=content;
 						
 						parent.appendChild(child);
@@ -31,14 +36,20 @@ title: Print Hello
 <style type="text/css">
 	h2{
 		text-align:left;
+		margin-top:-50px;
+		float:left;
 	}
-	.repo{
-		folat:left;
-		width:100px;
+	#gota-git{
+		float:right;
+		margin-top:-40px;
+	}
+	#repos{
+		margin-top:-20px;
 	}
 </style>
 
-<h2 > My Repos: </h2><br />
-<div id='repos' ></div>
+<h2 > My Repos: </h2>
 <div id="gota-git"><a href="https://github.com/gota-git">All Repos</a></div>
+<div class="clear"></div>
+<div id='repos' ></div>
 
