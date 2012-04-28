@@ -1,0 +1,33 @@
+
+{% include header.in  %}
+
+<style type="text/css">
+	h1{
+		text-align:center;
+	}
+
+	.date{
+		float:right;
+	}
+	
+</style>
+
+<div id="body">
+	<div id="content" style="text-align:left">
+		<h1 style="text-align:center">{{ page.title }}</h1>
+		<div class="clear"> </div>
+
+			{{  content  }}	
+	<div id="coments" >
+	<h2> 评论:</h2>
+	<!-- UY BEGIN -->
+		<div id="uyan_frame"></div>
+		<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1600216" async=""></script>
+	<!-- UY END -->
+	</div>
+	</div><!-- end of content -->
+
+	<div class="clear"> </div>
+</div> <!-- end of body  -->
+
+{% include footer.in  %}
