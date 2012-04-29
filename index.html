@@ -8,30 +8,24 @@ title: Print Hello
 -->
 
 		 <script type="text/javascript">
-			var child;
-			var content;
-			var url= "https://api.github.com/users/gota-git/repos"; 
-			$.ajax({
-				url:url,
-				dataType:"jsonp",
-				success:function(data){
-					var i;
-					var parent = document.getElementById("repos");
-					var css_child="float:left;width:130px;height:100px;margin-left:30px;";
-					for(i=0;i<3;i++){
-						child = document.createElement("div");
-						if (i<2){
-							child.setAttribute("style",css_child+"border-right:blue dotted 1px;");
-						} else {
-							child.setAttribute("style",css_child);
-						}
-						content= "<a href="+data.data[i].html_url+">"+data.data[i].name+":</a>"+"<div style='margin-left:20px'>"+data.data[i].description+"</div>";
-						child.innerHTML=content;
-						
-						parent.appendChild(child);
+			function getCommits(repo,div_n){			
+				var url= "https://api.github.com/repos/gota-git/"+repo+"/commits"; 
+
+				$.ajax({
+					url:url,
+					dataType:"jsonp",
+					success:function(data){
+						var commits;
+						commits=data.data[0].commit.author.date;
+						commits+="("+data.data[0].commit.author.name+"):"
+						commits+=data.data[0].commit.message;					
+						document.getElementById(div_n).innerHTML=commits;			
 					}
-				}
-			})
+				})
+			}
+			
+			getCommits("Lines","repos_1");
+			getCommits("julialang.github.com","repos_2");
  		</script>
 <style type="text/css">
 	h2{
@@ -46,10 +40,18 @@ title: Print Hello
 	#repos{
 		margin-top:-20px;
 	}
+	#repos div {
+		margin-left:30px;
+	}
 </style>
 
 <h2 > My Repos: </h2>
 <div id="gota-git"><a href="https://github.com/gota-git">All Repos</a></div>
 <div class="clear"></div>
-<div id='repos' ></div>
+<div id='repos' >
+	<h3>Lines:</h3>
+	<div id="repos_1"></div>
+	<h3>Julia's Manual:</h3>
+	<div id="repos_2"></div>
+</div>
 
