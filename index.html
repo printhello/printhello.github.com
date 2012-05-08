@@ -7,45 +7,138 @@ title: Print Hello
 这里面的内容会在_layouts/index.html里面的{{ content  }} 替换
 -->
 
-		 <script type="text/javascript">
-			function getCommits(repo,div_n){			
-				var url= "https://api.github.com/repos/gota-git/"+repo+"/commits"; 
+ <script type="text/javascript">
+// 使用Jquery提供的Ajax功能分别获得Github与豆瓣提供的信息
 
-				$.ajax({
-					url:url,
-					dataType:"jsonp",
-					success:function(data){
-						var commits;
-						commits=data.data[0].commit.author.date;
-						commits+="("+data.data[0].commit.author.name+"):"
-						commits+=data.data[0].commit.message;					
-						document.getElementById(div_n).innerHTML=commits;			
-					}
-				})
+	// 函数getCommits从Github获得repo的提交信息
+	function getCommits(repo,div_n){			
+	var url= "https://api.github.com/repos/gota-git/"+repo+"/commits"; //构建ajax url
+	$.ajax({
+		url:url,
+		dataType:"jsonp", // 使用jsonp格式
+		success:function(data){
+			var commits_html; // 存放评论html代码
+			commits_html=data.data[0].commit.author.date; 
+			commits_html+="("+data.data[0].commit.author.name+"):"
+			commits_html+=data.data[0].commit.message;					
+			document.getElementById(div_n).innerHTML=commits_html;			
+		}
+		})
+	} //end of getCommits
+
+	// 获得豆瓣上最近阅读的书籍的评论摘要	
+	function getNewBook(){			
+		var url= "http://api.douban.com/people/gotaly/collection?apikey=02fda306a2c1f9f708f8e913e845ede5&alt=xd"; // 构建url注意alt=xd
+		$.ajax({
+			url:url,
+			dataType:"jsonp", // 注意类型为jsonp
+			success:function(data){	
+				var book_summary=data.entry[0].summary.$t;
+				var book_img_url=data.entry[0]["db:subject"].link[2]["@href"];
+				var book_img_html="<img src="+book_img_url+" />"								
+				var book_summary_html = "<h3> 评论：</h3> <div id='book_summary';>" + book_summary+"</div> "; 
+				document.getElementById("book_img").innerHTML=book_img_html;
+				document.getElementById("book").innerHTML=book_summary_html;			
+				}
+		})
+	} // end of getNewBook
+
+	// 获得读过的书籍的图片和url
+	function getBooksImg(){
+		var url= "http://api.douban.com/people/gotaly/collection?apikey=02fda306a2c1f9f708f8e913e845ede5&alt=xd";
+		$.ajax({
+			url:url,
+			dataType:"jsonp",
+			success:function(data){	
+				var books_img_html='';
+				for(var i=1;i<7;i++){ // 连续获得6本书
+					var book_url=data.entry[i]["db:subject"].link[1]["@href"];	
+					var book_summary=data.entry[i].summary.$t;
+					var book_img_url=data.entry[i]["db:subject"].link[2]["@href"];
+					var book_img_html="<a href=" + book_url+ "><img src="+book_img_url+" alt="+book_summary+" /></a>";
+					books_img_html += book_img_html;
+				}		
+				books_img_html+= "<a href=http://book.douban.com/people/gotaly/all>More...</a>" ;
+				document.getElementById("book_imgs").innerHTML=books_img_html;
 			}
-			
-			getCommits("Lines","repos_1");
-			getCommits("julialang.github.com","repos_2");
- 		</script>
+		}) 
+	} // end of getBooksImg
+
+	// 分别获得项目"Lines" 和 "julialang.github.com" 的提交信息。
+	function insertRepos(){ 
+		getCommits("Lines","repos_1");
+		getCommits("julialang.github.com","repos_2");
+	} // end of insertCommits
+	
+	// 加入豆瓣信息
+	function insertDouban(){
+		getNewBook();
+		getBooksImg();
+	}
+
+	function init(){
+		insertRepos();
+		insertDouban();
+	}
+
+
+	init();
+
+
+</script>
 <style type="text/css">
 	h2{
 		text-align:left;
-		margin-top:-50px;
 		float:left;
+		margin-left:-20px;
 	}
 	#gota-git{
 		float:right;
-		margin-top:-40px;
+		margin-top:20px;
 	}
 	#repos{
-		margin-top:-20px;
+		margin-top:-30px;
 	}
 	#repos div {
 		margin-left:30px;
 	}
-</style>
+	#douban{
+		margin-top:-30px;
+	}
+	#douban div {
+		margin-left:30px;
+	}
+	#book_img{
+		float:left;
+		width:30px;
+		margin-right:10px
+	}
+	
+	#first_element {
+		margin-top:-70px;
+	}
+	
+	#book{
+		width:400px;
+		float:right;
+	}
+	#book_summary{
+		padding-left:4px;
+	}
 
-<h2 style="margin-left:-20px;" > My Repos: </h2>
+</style>
+<h2 id="first_element" > I'm Reading: </h2>
+<div class="clear"></div>
+<div id='douban' >
+	<div id="book_img"></div>
+	<div id="book"></div>
+	<div class="clear"></div>
+	<div id="book_imgs"> </div>
+</div>
+
+<div class="clear"></div>
+
+<h2 > My Repos: </h2>
 <div id="gota-git"><a href="https://github.com/gota-git">All Repos</a></div>
 <div class="clear"></div>
 <div id='repos' >
