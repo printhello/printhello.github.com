@@ -36,7 +36,7 @@ title: Print Hello
 				var book_summary=data.entry[0].summary.$t;
 				var book_img_url=data.entry[0]["db:subject"].link[2]["@href"];
 				var book_img_html="<img src="+book_img_url+" />"								
-				var book_summary_html = "<h3> 读后感：</h3> <div id='book_summary';>" + book_summary+"</div> "; 
+				var book_summary_html = "<h4> 读后感：</h4> <div id='book_summary';>" + book_summary+"</div> "; 
 				document.getElementById("book_img").innerHTML=book_img_html;
 				document.getElementById("book").innerHTML=book_summary_html;			
 				}
