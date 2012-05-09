@@ -58,9 +58,9 @@ a{
 }
 
 .clear {
-	 content: "";  
-   	display: block;  
-   	clear: both;  
+	 content:"";
+   	display: inline-table;
+   	clear: both;
 }
 
 #content-left
