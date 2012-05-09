@@ -95,28 +95,25 @@ title: Print Hello
 	}
 	#gota-git{
 		float:right;
-		margin-top:20px;
 	}
 	#repos{
-		margin-top:-30px;
+		margin:0 0 0 0;
+		padding-left:10px;
+		/* margin-top:-30px; */
 	}
 	#repos div {
 		margin-left:30px;
 	}
 	#douban{
-		margin-top:-30px;
+		margin:0 0 0 0;
+		/* margin-top:-30px; */
 	}
 	#douban div {
-		margin-left:30px;
+		
+		margin-left:10px;
 	}
 	#book_img{
-		float:left;
-		width:30px;
-		margin-right:10px
-	}
-	
-	#first_element {
-		margin-top:-70px;
+		float:left;	
 	}
 	
 	#book{
@@ -124,13 +121,26 @@ title: Print Hello
 		float:right;
 	}
 	#book_summary{
-		padding-left:4px;
+		padding-left:10px;
+	}
+	
+	.title{
+		width:500px;
+		margin:20px 0 0 0;
+		padding:0 0 0 0;
+	}
+	
+	.title h2{
+		margin:0 0 0 0;
+		padding:0 0 0 0;	
 	}
 
 </style>
+<div class="title">
 <h2 id="first_element" > I'm Reading: </h2>
 <div class="clear"></div>
-<div id='douban' >
+</div>
+<div id='douban' style="clear:both;" >
 	<div id="book_img"></div>
 	<div id="book"></div>
 	<div class="clear"></div>
@@ -139,9 +149,11 @@ title: Print Hello
 
 <div class="clear"></div>
 
+<div class="title">
 <h2 > My Repos: </h2>
 <div id="gota-git"><a href="https://github.com/gota-git">All Repos</a></div>
 <div class="clear"></div>
+</div>
 <div id='repos' >
 	<h3>Lines:</h3>
 	<div id="repos_1"></div>
