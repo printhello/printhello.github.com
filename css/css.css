@@ -58,7 +58,11 @@ a{
 }
 
 .clear{
-	clear: both;
+	display:block; /* DIV made visible */
+    	clear:both; /* Normal clearing for IE5.x/Win */ 
+	width: 100%; /* IE Clearing with 100% DIV for IE 6 */
+    	font-size:0;
+    	margin: -2px 0 -1em 1px; /* IE clearing with extra-large DIV for IE7 */
 	
 }
 
