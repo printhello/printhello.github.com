@@ -59,7 +59,7 @@ a{
 
 .clear {
 	 content:"";
-   	display: inline-table;
+   	display: block;
    	clear: both;
 }
 
