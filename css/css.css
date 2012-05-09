@@ -57,13 +57,9 @@ a{
 	background:pink;
 }
 
-.clear:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
+.clear{
 	clear: both;
-	height: 0;
+	
 }
 
 #content-left
