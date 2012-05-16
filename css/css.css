@@ -88,6 +88,18 @@ a{
 	height: 60px;
 }
 
+#archor
+a {
+	color: Black !important;
+	background: none !important;
+	padding: 0 !important;
+}
+
+a:link, a:visited {
+	color: #520;
+	background: transparent;
+	text-decoration: underline;
+}
 
 
 code {
@@ -100,5 +112,6 @@ pre {
   margin: 1em 2em 1em 1.5em;
   padding: .75em 1.25em;
   line-height: 1em;
+  width:600px;
 }
 
