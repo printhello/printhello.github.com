@@ -259,7 +259,90 @@ time_t时间，并且他足够只能以致于如果ptm里面的成员数值填�
 可以把系统设置成tv所指向的值。
 
 ##休眠
-##定时器（待补充）
+休眠就是让该进程转换到阻塞状态，直到休眠相应的时间后才开始继续运行，当然，是否一到时间就运行还要受到到进程调度的影响。Linux提供了
+几种精度的休眠API。
+###常用的秒级
+	
+	#include<unistd.h>
+	unsigned int sleep(unsigned int seconds);
+
+该函式会使进程挂起，并在seconds秒后继续运行（受进程调度影响）。成功时函式返回未睡眠的秒数，因为该睡眠可以被其他信号打断，这时将跳过
+sleep的挂起，函式返回seconds值减去已经睡眠的时间。如果不是太苛刻的时间要求，最简单的睡眠3秒钟代码如下：
+
+	sleep(3)
+
+这样，可以控制程序3秒后继续运行。
+
+###微秒级
+
+	#include <unistd.h>
+	int usleep (__useconds_t __useconds);
+
+在kernel 3.2.x中的/usr/include/unistd.h中有这么一句话：
+
+>  This function is a cancellation point and therefore not marked with __THROW. 
+
+因此不建议使用该函式，在BSD或其他UNIX中可能需要使用该函式，这里不作讨论
+
+###Linux提倡的纳秒级
+
+	#include <time.h>
+
+	int nanosleep(const struct timespec *req,struct timespec *rem);
+
+该函数使进程休眠req指定的时间，成功时返回0，否则返回-1.该函数与之前的sleep一个主要的不同是，当该函式被信号打断时，它返回-1，并设置errno，
+同时将剩余的时间存放到rem中。通过检查errno并将rem付给req可以实现保证休眠到所要的时间。
+
+	while(1){
+		res = nanosleep( req,rem);
+		if (res)
+			if (EINTR == errno){
+				req.tv_sec = rem.tv_sec;
+				req.tv_nsec = rem.tv_nsec;
+			}	
+		esle 
+			break;	
+	}
+
+##定时器
+定时器作用是在一定的延迟时间后通知进程从某个时间到新在已经过去了固定的时间。
+
+###简单常用的
+
+	#include <unistd.h>
+	unsigned int alarm(unsigned int seconds);
+
+
+该函数会在seconds秒后给进程发送SIGALRM信号。其返回值和sleep类似，如果之前已经设置了一个alarm那么他会取消之前的信号，并重新给出信号，返回之前的剩余时间。
+一种典型的用法是将seconds设为0，来清除该进程上的定时器。
+
+###更多控制的
+	
+	#include <sys/time.h>
+
+	struct itimerval {
+		struct timeval it_interval; /* next value */
+		struct timeval it_value; /* current value */
+	};
+
+	int getitimer(int which,struct itimerval *value);
+	int setitimer(int which,const struct itimerval *value,struct itimerval *ovalue);
+
+该函式提供了比alarm更高级的作用，首先，从struct timeval 可以知道他能够提供微秒级的定时器
+其次，alarm只能定时一次，下次定时需要重新定义。而setitimer则可以在it_interval后重启定时器，因此他又叫间隔定时器。
+其实现过程是在调用成功后，会根据which的规则将it_value的值逐渐减到0，然后根据which的值发送相应的信号。同时又将it_interval的值赋值给it_value再次开始新一轮的
+定时。
+
+which的取值意义以及发送的对应的信号为:
+
+>　　ITIMER_REAL 　　定时真实时间，与alarm类型相同。 　　		SIGALRM
+>　　ITIMER_VIRT 　　定时进程在用户态下的实际执行时间。 　　		SIGVTALRM
+>　　ITIMER_PROF 　　定时进程在用户态和核心态下的实际执行时间。 		SIGPROF
+
+和nanosleep一样，第三个参数ovalue不为NULL的时候，会将前一次的剩余定时时间存储在其中。如果给it_value赋值0则会消除之前的定时器。
+
+getitimer会返回which类型定时器当前剩余时间，上面两个函数在成功时均返回0，否则返回-1.
+
 
 
 	
