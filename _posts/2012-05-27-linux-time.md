@@ -290,7 +290,7 @@ sleep的挂起，函式返回seconds值减去已经睡眠的时间。如果不�
 
 	int nanosleep(const struct timespec *req,struct timespec *rem);
 
-该函数使进程休眠req指定的时间，成功时返回0，否则返回-1.该函数与之前的sleep一个主要的不同是，当该函式被信号打断时，它返回-1，并设置errno，
+该函式使进程休眠req指定的时间，成功时返回0，否则返回-1.该函式与之前的sleep一个主要的不同是，当该函式被信号打断时，它返回-1，并设置errno，
 同时将剩余的时间存放到rem中。通过检查errno并将rem付给req可以实现保证休眠到所要的时间。
 
 	while(1){
@@ -313,7 +313,7 @@ sleep的挂起，函式返回seconds值减去已经睡眠的时间。如果不�
 	unsigned int alarm(unsigned int seconds);
 
 
-该函数会在seconds秒后给进程发送SIGALRM信号。其返回值和sleep类似，如果之前已经设置了一个alarm那么他会取消之前的信号，并重新给出信号，返回之前的剩余时间。
+该函式会在seconds秒后给进程发送SIGALRM信号。其返回值和sleep类似，如果之前已经设置了一个alarm那么他会取消之前的信号，并重新给出信号，返回之前的剩余时间。
 一种典型的用法是将seconds设为0，来清除该进程上的定时器。
 
 ###更多控制的
@@ -341,7 +341,7 @@ which的取值意义以及发送的对应的信号为:
 
 和nanosleep一样，第三个参数ovalue不为NULL的时候，会将前一次的剩余定时时间存储在其中。如果给it_value赋值0则会消除之前的定时器。
 
-getitimer会返回which类型定时器当前剩余时间，上面两个函数在成功时均返回0，否则返回-1.
+getitimer会返回which类型定时器当前剩余时间，上面两个函式在成功时均返回0，否则返回-1.
 
 
 
