@@ -22,6 +22,8 @@ title: 获得豆瓣列表和Github信息
 
 也可以使用jQuery.getJSON(),简单的获取json数据。关于其他的jQuery的Ajax功能暂未用到。
 
+
+
 ##二、获取豆瓣书籍信息
 豆瓣的API中给出了详细的文档。可以参见[豆瓣API参考手册](http://www.douban.com/service/apidoc/reference/),其中
 用户和收藏分别对应用户信息和用户收藏的书籍，其他如电影、音乐的接口类似。
