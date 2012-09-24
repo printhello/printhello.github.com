@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 获得豆瓣列表和Github信息
+title: 获取豆瓣和Github信息
 ---
 
 关于Ajax的强大功能搞Web的童鞋们应该早有耳闻，jQuery更是名声在外。这里我的blog为了
