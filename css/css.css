@@ -37,7 +37,7 @@ a{
 }
 
 .nav-ul {
-    background:black;
+    background:#000000;
    	list-style:none;   /**** 去掉黑点 *****/  
 	padding:0 0 0 100px;     
 }
@@ -54,7 +54,7 @@ a{
 
 #navigation a:hover
 {
-	background:pink;
+	background:#FFC0CB;
 }
 
 .clear{	
@@ -93,7 +93,7 @@ a{
 
 code {
   font: 80% Monaco, 'Courier New', Courier, monospace;
-  width:600px;
+  width:500px;
 }
 
 pre {
